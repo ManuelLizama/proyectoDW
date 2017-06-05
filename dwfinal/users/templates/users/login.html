@@ -1,0 +1,29 @@
+{% extends "users/base.html" %}
+{% load bootstrap3 %}
+{% block title %}
+  Ingreso
+{% endblock %}
+{% block css %}
+  <style>
+  #top{
+    margin-top:200px;
+  }
+  </style>
+{% endblock %}
+{% block content %}
+<div class="col-md-12 col-sm-12 col-lg-12" id="top"></div>
+<div class="col-md-4"></div>
+  <div class="col-md-4 col-sm-4 col-lg-4 well">
+      <form class="form-signin" action="/users/login/" method="POST" onsubmit="setFormSubmitting()">
+          {% csrf_token %}
+          <h2 class="form-signin-heading">Ingrese sus credenciales</h2>
+          {% bootstrap_form form %}
+          {% buttons %}
+              <button type="submit" class="btn btn-success">
+                  {% bootstrap_icon "star" %} Enviar
+              </button>
+          {% endbuttons %}
+              
+      </form>
+  </div>
+{% endblock %}

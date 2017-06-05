@@ -6,46 +6,23 @@ from django.contrib.auth import authenticate, login as auth_login, logout as log
 from django.contrib.auth.models import User
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
-
-from base.views import index
 from users.forms import PasswordChangeForm, LoginForm
-from usercliente.views import cartola
-
 
 @login_required
 def index(request):
     """
-    Pagina inicial con últimos cambios realizados por el usuario.
+    Pagina inicial.
     """
-    revs = Version.objects.filter( content_type__model__in = ( 'ordentrabajo' , 'solicitud', 'contrato', 'respaldofactura', 'archivo' ), revision__in = Revision.objects.filter( user = request.user ) ).order_by('-revision__date_created')
-    paginator = Paginator(revs, 25)  # Show 25 contacts per page
-    page = request.GET.get('page') or 1
-
-    if request.user.es_cliente:
-        if 'sucursales' not in request.session:
-            sucursales = Direccion.objects.filter( cliente = request.user.clientes.all().first() )
-            request.session['sucursales'] = [s.id for s in sucursales]
-
-    try:
-        revisiones = paginator.page(page)
-    except PageNotAnInteger:
-        # If page is not an integer, deliver first page.
-        revisiones = paginator.page(1)
-    except EmptyPage:
-        # If page is out of range (e.g. 9999), deliver last page of results.
-        revisiones = paginator.page(paginator.num_pages)
-
     return render(
         request,
-        'base/index.html',
+        'users/index.html',
         {
-            'revisiones' : revisiones
         }
     )
 
 
 def login( request ):
-    from django.forms.util import ErrorList
+    from django.forms.utils import ErrorList
     if request.user.is_authenticated():
         return redirect(index)
     if request.method == "POST":
