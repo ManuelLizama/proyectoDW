@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+{% load staticfiles %}
+{% load bootstrap3 %}
+{% bootstrap_css %}
+{% bootstrap_javascript jquery=True%}
+<html>
+    <head>
+        <title>
+            {% block title %}
+            {% endblock %}
+        </title>
+        {% include "users/js_lib.html" %}
+        {% block css %}
+        {% endblock %}
+        <meta charset="UTF-8">
+    </head>
+    <body>
+        {% if user.is_authenticated %}
+            <div class="navbar">
+                <div class="container-fluid">
+                    <a class="navbar-brand" href="#">Proyecto Final</a>
+                    <ul class="nav navbar-nav">
+                        <li class="active">
+                            <a href="#">Inicio</a>
+                        </li>
+                        <li>
+                            <a href="#">Clientes</a>
+                        </li>
+                    </ul>
+                    <ul class="nav navbar-nav navbar-right">
+                        <li>
+                            <a href="{%url 'logout' %}">Salir</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        {% endif %}
+        <div class="container">
+            {% block content %}
+            {% endblock %}
+        </div>
+    {% block js_lib %}
+    {% endblock %}
+    </body>
+</html>

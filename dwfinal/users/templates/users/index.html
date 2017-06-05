@@ -1,0 +1,15 @@
+{% extends "users/base.html" %}
+{% block title %}
+    Inicio
+{% endblock %}
+{% block css %}
+{% endblock %}
+
+{% block content %}
+    Bienvenido {{request.user}}
+{% endblock %}
+{% block js_lib %}
+    <script>
+        console.log('inicio');
+    </script>
+{% endblock %}
