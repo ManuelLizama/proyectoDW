@@ -1,2 +1,3 @@
 dwfinal/settings.py
 *.pyc
+db.sqlite3

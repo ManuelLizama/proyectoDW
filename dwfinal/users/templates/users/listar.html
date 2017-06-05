@@ -1,0 +1,42 @@
+{% extends "users/base.html" %}
+
+{% block title %}
+  Usuarios
+{% endblock %}
+
+{% block css %}
+{% endblock %}
+
+{% block content %}
+<div class="row">
+  <div class="col-md-6 col-lg-8">
+    <h2>Usuarios</h2>
+    <table class="table table-bordered table-hover">
+      <thead>
+        <tr>
+          <th>Id</th>
+          <th>Nombre de usuario</th>
+          <th>Nombre Completo</th>
+          <th>Email</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for user in usuarios %}
+          <tr>
+            <td>{{user.id}}</td>
+            <td>{{user.username}}</td>
+            <td>{{user.get_full_name}}</td>
+            <td>{{user.email}}</td>
+          </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+  <div class="col-md-6 col-lg-4">
+    
+  </div>
+</div>
+{% endblock %}
+
+{% block js_lib %}
+{% endblock %}

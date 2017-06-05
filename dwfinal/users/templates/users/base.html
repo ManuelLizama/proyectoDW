@@ -18,10 +18,10 @@
         {% if user.is_authenticated %}
             <div class="navbar">
                 <div class="container-fluid">
-                    <a class="navbar-brand" href="#">Proyecto Final</a>
+                    <a class="navbar-brand" href="{%url 'index' %}">Proyecto Final</a>
                     <ul class="nav navbar-nav">
-                        <li class="active">
-                            <a href="#">Inicio</a>
+                        <li>
+                            <a href="{%url 'usuarios' %}">Usuarios</a>
                         </li>
                         <li>
                             <a href="#">Clientes</a>
