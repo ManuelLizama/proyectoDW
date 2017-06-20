@@ -38,7 +38,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'bootstrap3',
-    'users'
+    'users',
+    'clientes'
 ]
 
 MIDDLEWARE = [
@@ -128,6 +129,8 @@ STATICFILES_DIRS = (
 
 STATIC_ROOT = os.path.abspath( os.path.join( BASE_DIR, '..', 'static' ) )
 
+
+MESSAGE_STORAGE = 'django.contrib.messages.storage.cookie.CookieStorage'
 
 BOOTSTRAP3 = {
 
