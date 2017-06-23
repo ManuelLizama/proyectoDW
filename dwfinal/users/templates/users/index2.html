@@ -1,0 +1,19 @@
+{% extends "users/base.html" %}
+{% block title %}
+    Inicio
+{% endblock %}
+{% block css %}
+{% endblock %}
+
+{% block content %}
+    <h1>Bienvenido {{request.user}}</h1>
+    <h2>Esta es la pagina principal</h2>
+
+
+    
+{% endblock %}
+{% block js_lib %}
+    <script>
+        console.log('inicio');
+    </script>
+{% endblock %}

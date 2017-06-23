@@ -13,27 +13,47 @@
         {% block css %}
         {% endblock %}
         <meta charset="UTF-8">
+        <link href="{% static 'css/agency.css' %}" rel="stylesheet">
     </head>
     <body>
         {% if user.is_authenticated %}
-            <div class="navbar">
-                <div class="container-fluid">
-                    <a class="navbar-brand" href="{%url 'index' %}">Proyecto Final</a>
-                    <ul class="nav navbar-nav">
-                        <li>
-                            <a href="{%url 'usuarios' %}">Usuarios</a>
-                        </li>
-                        <li>
-                            <a href="#">Clientes</a>
-                        </li>
-                    </ul>
-                    <ul class="nav navbar-nav navbar-right">
-                        <li>
-                            <a href="{%url 'logout' %}">Salir</a>
-                        </li>
-                    </ul>
+            <nav id="mainNav" class="navbar navbar-default navbar-fixed-top">
+                <div class="container">
+            <!-- Brand and toggle get grouped for better mobile display -->
+                    <div class="navbar-header page-scroll">
+                        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                            <span class="sr-only">Navegacion</span> Menu <i class="fa fa-bars"></i>
+                        </button>
+                        <a class="navbar-brand page-scroll" href="{%url 'index' %}">DjangoBook</a>
+                    </div>
+
+                    <!-- Collect the nav links, forms, and other content for toggling -->
+                    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                        <ul class="nav navbar-nav navbar-left">
+                            <li class="hidden">
+                                <a href="#page-top"></a>
+                            </li>
+                            <li>
+                                <a class="page-scroll" href="{%url 'usuarios' %}">Usuarios</a>
+                            </li>
+                            <li>
+                                <a class="page-scroll" href="#">Clientes</a>
+                            </li>
+                        </ul>
+                        <ul class="nav navbar-nav navbar-right">
+                            <li>
+                                <a href="{%url 'logout' %}">Salir</a>
+                            </li>
+                        </ul>
+                    </div>
+                    <!-- /.navbar-collapse -->
                 </div>
-            </div>
+            <!-- /.container-fluid -->
+            </nav>
+        
+        
+
+
         {% endif %}
         <div class="container">
             {% block content %}
