@@ -24,7 +24,7 @@
                             <a href="{%url 'usuarios' %}">Usuarios</a>
                         </li>
                         <li>
-                            <a href="#">Clientes</a>
+                            <a href="{%url 'nuevo_cliente' %}">Clientes</a>
                         </li>
                     </ul>
                     <ul class="nav navbar-nav navbar-right">
@@ -35,6 +35,29 @@
                 </div>
             </div>
         {% endif %}
+        <div id="mensajes" style="margin-top:1px;padding:3px;width: 99.5%;position: fixed;z-index: 99;">
+            {% if messages %}
+                <div class="msg">
+                        {% for message in messages %}
+                        <div {% if message.tags %} class="alert alert-{% if message.level == DEFAULT_MESSAGE_LEVELS.ERROR %}danger{% else %}{{ message.tags }} {% endif %}"{% endif %}>
+                            <a href="#" class="close" data-dismiss="alert">&times;</a>
+                             {% if message.level == DEFAULT_MESSAGE_LEVELS.ERROR %}Importante: {% endif %}
+                            {{ message|safe }}
+                        </div>
+                        {% endfor %}
+                </div>
+                <script>
+                    $(function(){
+                        // Si existen mensajes al hacer click en el div del mensaje desaparecera lentamente y se elimina del DOM
+                        $('.msg div').on('click',function(){
+                            $( this ).hide( 1500, function() {
+                                $( this ).remove();
+                              });
+                        });
+                    });
+                </script>
+            {% endif %}
+        </div>
         <div class="container">
             {% block content %}
             {% endblock %}
