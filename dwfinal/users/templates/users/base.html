@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 {% load staticfiles %}
+{% load thumbnail %}
 {% load bootstrap3 %}
 {% bootstrap_css %}
 {% bootstrap_javascript jquery=True%}
@@ -24,7 +25,10 @@
                             <a href="{%url 'usuarios' %}">Usuarios</a>
                         </li>
                         <li>
-                            <a href="{%url 'nuevo_cliente' %}">Clientes</a>
+                            <a href="{%url 'nuevo_cliente' %}">Agregar Cliente</a>
+                        </li>
+                        <li>
+                            <a href="{%url 'lista_cliente' %}">Lista Clientes</a>
                         </li>
                     </ul>
                     <ul class="nav navbar-nav navbar-right">

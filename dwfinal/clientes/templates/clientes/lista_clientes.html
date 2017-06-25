@@ -1,0 +1,37 @@
+{% extends "users/base.html" %}
+{% load static %}
+{% block title %}
+  Clientes
+{% endblock %}
+{% block css %}
+{% endblock %}
+{% load thumbnail %}
+{% block content %}
+<section id="team" class="bg-light-gray">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 text-center">
+                    <h2 class="section-heading">Clientes</h2>
+                    <h3 class="section-subheading text-muted">Estos son los clientes registrados</h3>
+                </div>
+            </div>
+            <div class="row">
+                {% for cliente in clientes %}
+                <div class="col-sm-4">
+                    <div class="team-member">
+                        {% thumbnail cliente.foto "250x250" crop="center" as im %}
+                        <img src= '{{ im.url  }}' alt="" class="img-circle img-responsive img-thumbnail  pull-left img-margin-right">
+                        {% endthumbnail %}
+                        <h4>{{cliente.nombre}}</h4>
+                        <p class="text-muted">{{cliente.telefono}}</p>
+                        <p class="text-muted">{{cliente.correo}}</p>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </section>
+{% endblock %}
+
+{% block js_lib %}
+{% endblock %}
